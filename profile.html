@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Thông tin cá nhân</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/admin.css" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+	<style>
+		.form-profile input {
+			border: 0;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="profile.html">VNA SHOP - Trang Quản Trị</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-user">&nbsp;</span>Xin chào: Hoàng Tuấn An</a>
+					</li>
+					<li>
+						<a href="welcome.html"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="col-md-3">
+
+			<div id="sidebar">
+				<div class="container-fluid tmargin">
+					<div class="input-group">
+
+					</div>
+				</div>
+
+				<ul class="nav navbar-nav side-bar">
+
+					<li class="side-bar tmargin">
+						<a href="quanLyDonHang.html">
+							<span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý Đơn hàng</a>
+					</li>
+
+					<li class="side-bar">
+						<a href='quanLySanPham.html'>
+							<span class="glyphicon glyphicon-folder-open">&nbsp;</span>Quản lý Sản phẩm</a>
+					</li>
+
+					<li class="side-bar">
+						<a href='quanlyTonKho.html'>
+							<span class="glyphicon glyphicon-tasks">&nbsp;</span>Quản lý Tồn kho</a>
+					</li>
+
+
+
+					<li class="side-bar main-menu">
+						<a href="quanLyTaiKhoan.html">
+							<span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Tài khoản</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="quanLyPhanHoi.html">
+							<span class="glyphicon glyphicon-envelope">&nbsp;</span>Quản lý Phản hồi</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="thongKe.html">
+							<span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
+					</li>
+
+					<li class="side-bar active">
+						<a href="profile.html">
+							<span class="glyphicon glyphicon-user ">&nbsp;</span>Thông tin cá nhân</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-9 animated bounce">
+			<h3 class="page-header">Thông tin cá nhân</h3>
+
+			<button class="btn btn-success btnCapNhatThongTin">Cập nhật
+				thông tin</button>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-primary btnDoiMatKhau">Đổi mật khẩu</button>
+			<hr />
+
+			<form class="form-profile">
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<input type="hidden" class="form-control-plaintext nguoiDungId" value="$">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="staticEmail" class="col-sm-2 col-form-label">Họ Tên</label>
+					<div class="col-sm-10">
+						<input id="name-profile" type="text" readonly class="form-control-plaintext"
+							value="Hoàng Tuấn An">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="staticEmail" class="col-sm-2 col-form-label">Email đăng ký</label>
+					<div class="col-sm-10">
+						<input id="email-profile" type="text" readonly class="form-control-plaintext"
+							value="admintuanan@gmail.com">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="staticEmail" class="col-sm-2 col-form-label">Số điện thoại</label>
+					<div class="col-sm-10">
+						<input id="phone-profile" type="text" readonly class="form-control-plaintext"
+							value="09898989898">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="staticEmail" class="col-sm-2 col-form-label">Địa chỉ</label>
+					<div class="col-sm-10">
+						<input id="address-profile" type="text" readonly class="form-control-plaintext" value="Hà Nội">
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="row col-md-6">
+			<form class="formCapNhat" action="">
+				<div>
+					<div class="modal fade" id="capNhatModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static"
+						data-keyboard="false">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin cá nhân</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<input type="hidden" name="" value="" />
+									<div class="form-group">
+										<input type="hidden" class="form-control" name="id" value="" />
+									</div>
+									<div class="form-group">
+										<label for="name-update">Họ tên</label>
+										<input id="name-update" type="text" class="form-control" name="hoTen"
+											required="required" />
+									</div>
+									<div class="form-group">
+										<label for="phone-update">Số điện thoại</label>
+										<input id="phone-update" type="text" class="form-control" name="soDienThoai"
+											required="required" />
+									</div>
+									<div class="form-group">
+										<label for="address-update">Địa chỉ</label>
+										<input id="address-update" type="text" class="form-control" name="diaChi"
+											required="required" />
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Hủy</button>
+										<input class="btn btn-primary" id="btnSubmit" type="submit" value="Xác nhận" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="row col-md-6">
+				<form class="formDoiMatKhau">
+					<div>
+						<div class="modal fade" id="doiMKModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static"
+							data-keyboard="false">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<label for="old-password">Mật khẩu cũ</label>
+											<input id="old-password" type="password" class="form-control"
+												name="oldPassword" required="required" />
+										</div>
+										<div class="form-group">
+											<label for="new-password">Mật khẩu mới</label>
+											<input id="new-password" type="password" class="form-control"
+												name="newPassword" required="required" />
+										</div>
+										<div class="form-group">
+											<label for="confirm-new-password">Nhắc lại mật khẩu mới</label>
+											<input id="confirm-new-password" type="password" class="form-control"
+												name="confirmNewPassword" required="required" />
+										</div>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Hủy</button>
+											<input class="btn btn-primary" type="button" id="btnXacNhanDoiMK"
+												value="Xác nhận" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="<c:url value='/js/profileAdminAjax.js'/>"></script>
+
+		<script>
+			$(document).ready(function () {
+				// Khi nhấn nút "Cập nhật thông tin"
+				$('.btnCapNhatThongTin').click(function () {
+					// Lấy thông tin từ form-profile
+					var hoTen = $('#name-profile').val();
+					var email = $('#email-profile').val();
+					var soDienThoai = $('#phone-profile').val();
+					var diaChi = $('#address-profile').val();
+
+					// Đưa thông tin vào modal
+					$('#name-update').val(hoTen);
+					$('#phone-update').val(soDienThoai);
+					$('#address-update').val(diaChi);
+
+					// Hiển thị modal
+					$('#capNhatModal').modal('show');
+				});
+
+				// Khi nhấn nút "Xác nhận" trong modal
+				$('#btnSubmit').click(function (event) {
+					event.preventDefault();
+
+					// Lấy thông tin từ modal
+					var hoTen = $('#name-update').val();
+					var soDienThoai = $('#phone-update').val();
+					var diaChi = $('#address-update').val();
+
+					// Cập nhật thông tin trong form-profile
+					$('#name-profile').val(hoTen);
+					$('#phone-profile').val(soDienThoai);
+					$('#address-profile').val(diaChi);
+
+					// Ẩn modal
+					$('#capNhatModal').modal('hide');
+
+					// Hiển thị thông báo cập nhật thành công
+					alert('Cập nhật thông tin thành công!');
+				});
+
+				// Khi nhấn nút "Hủy" trong modal
+				$('#capNhatModal .btn-secondary').click(function () {
+					// Ẩn modal mà không lưu thay đổi
+					$('#capNhatModal').modal('hide');
+				});
+			});
+		</script>
+
+		<script>
+			$(document).ready(function () {
+				// Khi nhấn nút "Cập nhật thông tin"
+				$('.btnCapNhatThongTin').click(function () {
+					// Lấy thông tin từ form-profile
+					var hoTen = $('#name-profile').val();
+					var soDienThoai = $('#phone-profile').val();
+					var diaChi = $('#address-profile').val();
+
+					// Đưa thông tin vào modal
+					$('#name-update').val(hoTen);
+					$('#phone-update').val(soDienThoai);
+					$('#address-update').val(diaChi);
+
+					// Hiển thị modal
+					$('#capNhatModal').modal('show');
+				});
+
+				// Khi nhấn nút "Xác nhận" trong modal cập nhật thông tin
+				$('#btnSubmit').click(function (event) {
+					event.preventDefault();
+
+					// Lấy thông tin từ modal
+					var hoTen = $('#name-update').val();
+					var soDienThoai = $('#phone-update').val();
+					var diaChi = $('#address-update').val();
+
+					// Cập nhật thông tin trong form-profile
+					$('#name-profile').val(hoTen);
+					$('#phone-profile').val(soDienThoai);
+					$('#address-profile').val(diaChi);
+
+					// Ẩn modal
+					$('#capNhatModal').modal('hide');
+
+					// Hiển thị thông báo cập nhật thành công
+					alert('Cập nhật thông tin thành công!');
+				});
+
+				// Khi nhấn nút "Hủy" trong modal cập nhật thông tin
+				$('#capNhatModal .btn-secondary').click(function () {
+					// Ẩn modal mà không lưu thay đổi
+					$('#capNhatModal').modal('hide');
+				});
+
+				// Khi nhấn nút "Đổi mật khẩu"
+				$('.btnDoiMatKhau').click(function () {
+					// Hiển thị modal đổi mật khẩu
+					$('#doiMKModal').modal('show');
+				});
+
+				// Khi nhấn nút "Xác nhận" trong modal đổi mật khẩu
+				$('#btnXacNhanDoiMK').click(function (event) {
+					event.preventDefault();
+
+					// Lấy giá trị mật khẩu từ modal
+					var oldPassword = $('#old-password').val();
+					var newPassword = $('#new-password').val();
+					var confirmNewPassword = $('#confirm-new-password').val();
+
+					// Kiểm tra nếu bất kỳ trường nào bị bỏ trống
+					if (!oldPassword || !newPassword || !confirmNewPassword) {
+						alert('Vui lòng nhập đầy đủ thông tin.');
+						return;
+					}
+
+					// Kiểm tra mật khẩu mới và xác nhận mật khẩu mới có khớp không
+					if (newPassword !== confirmNewPassword) {
+						alert('Mật khẩu mới và xác nhận mật khẩu mới không khớp.');
+						return;
+					}
+
+					// Ẩn modal
+					$('#doiMKModal').modal('hide');
+
+					// Hiển thị thông báo cập nhật thành công
+					alert('Đổi mật khẩu thành công!');
+				});
+
+				// Khi nhấn nút "Hủy" trong modal đổi mật khẩu
+				$('#doiMKModal .btn-secondary').click(function () {
+					// Ẩn modal mà không làm gì thêm
+					$('#doiMKModal').modal('hide');
+				});
+			});
+		</script>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/admin.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        .modal-open {
+            overflow: scroll;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="profile.html">VNA SHOP - Trang Quản Trị</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user">&nbsp;</span>Xin chào: Hoàng Tuấn An</a>
+                    </li>
+                    <li>
+                        <a href="welcome.html"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="col-md-3">
+
+            <div id="sidebar">
+                <div class="container-fluid tmargin">
+                    <div class="input-group">
+
+                    </div>
+                </div>
+
+                <ul class="nav navbar-nav side-bar">
+
+                    <li class="side-bar tmargin">
+                        <a href="quanLyDonHang.html">
+                            <span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý Đơn hàng</a>
+                    </li>
+
+                    <li class="side-bar ">
+                        <a href='quanLySanPham.html'>
+                            <span class="glyphicon glyphicon-folder-open">&nbsp;</span>Quản lý Sản phẩm</a>
+                    </li>
+
+                    <li class="side-bar">
+                        <a href='quanlyTonKho.html'>
+                            <span class="glyphicon glyphicon-tasks">&nbsp;</span>Quản lý Tồn kho</a>
+                    </li>
+
+
+
+                    <li class="side-bar main-menu active">
+                        <a href="quanLyTaiKhoan.html">
+                            <span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Tài khoản</a>
+                    </li>
+
+                    <li class="side-bar main-menu">
+                        <a href="quanLyPhanHoi.html">
+                            <span class="glyphicon glyphicon-envelope">&nbsp;</span>Quản lý Phản hồi</a>
+                    </li>
+
+                    <li class="side-bar main-menu">
+                        <a href="thongKe.html">
+                            <span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
+                    </li>
+
+                    <li class="side-bar">
+                        <a href="profile.html">
+                            <span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9 animated bounce">
+            <h3 class="page-header">Quản lý Tài khoản</h3>
+
+            <button class="btn btn-success btnThem">Thêm tài khoản</button>
+
+            <table class="table table-hover taiKhoanTable" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Mật khẩu</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>phamquoc123@gmail.com</td>
+                        <td>abc123!@#</td>
+                        <td>Phạm Quốc Kiệt</td>
+                        <td>0123456789</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnSua">Sửa</button>
+                            <button type="button" class="btn btn-danger btnXoa">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>vutrong123@gmail.com</td>
+                        <td>abc123!@#</td>
+                        <td>Vũ Trọng Tội</td>
+                        <td>0123456789</td>
+                        <td>Đà Nẵng</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnSua">Sửa</button>
+                            <button type="button" class="btn btn-danger btnXoa">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>trantrang@gmail.com</td>
+                        <td>abc123!@#</td>
+                        <td>Trần Nghĩa Trang</td>
+                        <td>0123456789</td>
+                        <td>Hà Nam</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnSua">Sửa</button>
+                            <button type="button" class="btn btn-danger btnXoa">Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lythuong@gmail.com</td>
+                        <td>abc123!@#</td>
+                        <td>Lý Thường Thạo</td>
+                        <td>0123456789</td>
+                        <td>Bắc Ninh</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnSua">Sửa</button>
+                            <button type="button" class="btn btn-danger btnXoa">Xóa</button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>lelele@gmail.com</td>
+                        <td>abc123!@#</td>
+                        <td>Lê Tận Tam</td>
+                        <td>0123456789</td>
+                        <td>Bắc Giang</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btnSua">Sửa</button>
+                            <button type="button" class="btn btn-danger btnXoa">Xóa</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <ul class="pagination">
+    </ul>
+    </div>
+
+    <div class="row col-md-6">
+        <form class="formAdd" action="">
+            <div>
+                <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Thêm mới Tài khoản</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" class="form-control" name="email"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="text" class="form-control" name="password"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password2">Nhập lại Password</label>
+                                    <input id="password2" type="text" class="form-control" name="password2"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="hoTen">Họ Tên:</label>
+                                    <input id="hoTen" type="text" class="form-control" name="hoTen"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số điện thoại:</label>
+                                    <input id="phone" type="text" class="form-control" name="phone"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Địa chỉ</label>
+                                    <input id="diaChi" type="text" class="form-control" name="diaChi"
+                                        required="required" />
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+
+                                <input class="btn btn-primary" id="btnSubmit" type="submit" value="Thêm mới" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row col-md-6">
+        <form class="formCapNhat" action="">
+            <div>
+                <div class="modal fade" id="capNhatModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin Sản phẩm</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" class="form-control" name="email"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="text" class="form-control" name="password"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password2">Nhập lại Password</label>
+                                    <input id="password2" type="text" class="form-control" name="password2"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="hoTen">Họ Tên:</label>
+                                    <input id="hoTen" type="text" class="form-control" name="hoTen"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số điện thoại:</label>
+                                    <input id="phone" type="text" class="form-control" name="phone"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Địa chỉ</label>
+                                    <input id="diaChi" type="text" class="form-control" name="diaChi"
+                                        required="required" />
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                <input class="btn btn-primary" id="btnSubmit" type="submit" value="Xác nhận" />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            // Show formCapNhat when the "Sửa" button is clicked
+            $('.btnSua').click(function () {
+
+                // Show the modal
+                $('#capNhatModal').modal('show');
+
+
+            });
+
+            $('.btnThem').click(function () {
+                $('#add').modal('show');
+            });
+
+            // Handle form submission for formAdd
+            $('.formAdd').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the values entered in the form
+                var email = $('#email').val();
+                var password = $('#password').val();
+                var password2 = $('#password2').val();
+                var hoTen = $('#hoTen').val();
+                var phone = $('#phone').val();
+                var diaChi = $('#diaChi').val();
+
+                // Append a new row to the table with the entered data
+                var newRow = '<tr>' +
+                    '<td>' + email + '</td>' +
+                    '<td>' + password + '</td>' +
+                    '<td>' + password2 + '</td>' +
+                    '<td>' + hoTen + '</td>' +
+                    '<td>' + phone + '</td>' +
+                    '<td>' + diaChi + '</td>' +
+                    '<td></td>' +
+                    '<td>' +
+                    '<button class="btn btn-warning btnSua">Sửa</button>' +
+                    '<button class="btn btn-danger btnXoa">Xóa</button>' +
+                    '</td>' +
+
+
+                    '</tr>';
+
+                $('.sanPhamTable tbody').append(newRow); // Append the new row to the table body
+
+                $('#add').modal('hide');
+
+            });
+        });
+
+        $(document).ready(function () {
+            // Xử lý sự kiện khi nút "Xóa" được click
+            $(".btnXoa").click(function () {
+                // Lấy hàng chứa nút "Xóa" được click
+                var row = $(this).closest('tr');
+
+                // Hiển thị hộp thoại xác nhận xóa
+                var confirmed = confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?");
+
+                // Nếu người dùng đồng ý xóa
+                if (confirmed) {
+                    // Xóa hàng khỏi bảng
+                    row.remove();
+                    // Hiển thị thông báo xóa thành công hoặc thực hiện các bước xóa thực tế tại đây
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
+    <script src="<c:url value='/js/sanPhamAjax.js'/>"></script>
+</body>
+
+</html>

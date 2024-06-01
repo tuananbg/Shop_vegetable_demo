@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Quản lý sản phẩm</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/admin.css" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.modal-open {
+			overflow: scroll;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="profile.html">VNA SHOP - Trang Quản Trị</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-user">&nbsp;</span>Xin chào: Hoàng Tuấn An</a>
+					</li>
+					<li>
+						<a href="welcome.html"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="col-md-3">
+
+			<div id="sidebar">
+				<div class="container-fluid tmargin">
+					<div class="input-group">
+
+					</div>
+				</div>
+
+				<ul class="nav navbar-nav side-bar">
+
+					<li class="side-bar tmargin">
+						<a href="quanLyDonHang.html">
+							<span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý Đơn hàng</a>
+					</li>
+
+					<li class="side-bar active">
+						<a href='quanLySanPham.html'>
+							<span class="glyphicon glyphicon-folder-open">&nbsp;</span>Quản lý Sản phẩm</a>
+					</li>
+
+					<li class="side-bar">
+						<a href='quanlyTonKho.html'>
+							<span class="glyphicon glyphicon-tasks">&nbsp;</span>Quản lý Tồn kho</a>
+					</li>
+
+
+
+					<li class="side-bar main-menu">
+						<a href="quanLyTaiKhoan.html">
+							<span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Tài khoản</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="quanLyPhanHoi.html">
+							<span class="glyphicon glyphicon-envelope">&nbsp;</span>Quản lý Phản hồi</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="thongKe.html">
+							<span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
+					</li>
+
+					<li class="side-bar">
+						<a href="profile.html">
+							<span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-9 animated bounce">
+			<h3 class="page-header">Quản lý Sản Phẩm</h3>
+			<hr>
+
+			<form class="form-inline" id="searchForm" name="searchObject">
+				<div class="form-group">
+					<select class="form-control" name="danhMucId" id="danhMuc">
+						<c:forEach var="danhMuc" items="">
+							<option value="all">Tất cả</option>
+							<option value="rau_xanh">Rau Xanh</option>
+							<option value="rau_cu">Rau củ</option>
+							<option value="qua">Quả</option>
+							<option value="rau_thom">Rau thơm</option>
+						</c:forEach>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<select class="form-control" name="donGia" id="price">
+						<option value="">Tất cả giá</option>
+						<option value="duoi-2">Dưới 20.000đ</option>
+						<option value="2-den-4">20.000đ đến 40.000đ</option>
+						<option value="4-den-8">40.000đ - 80.000đ</option>
+						<option value="tren-8">Trên 80.000đ</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<select class="form-control" name="sapXepTheoGia">
+						<option value="asc">Sắp xếp theo giá tăng dần</option>
+						<option value="desc">Sắp xếp theo giá giảm dần</option>
+					</select>
+				</div>
+				<div class="form-group"><label for="">Ngày nhập:</label>
+					<input type="date">
+				</div>
+				<div class="form-group"><button class="btn btn-primary btnLoc">Lọc</button></div>
+
+			</form>
+
+
+
+			<hr />
+			<table class="table table-hover sanPhamTable " style="text-align: center;">
+				<thead class="table-head">
+					<tr>
+
+						<th>Mã</th>
+						<th>Tên SP</th>
+						<th>Số lượng</th>
+						<th>Ngày nhập</th>
+						<th>Đơn giá</th>
+						<th>Mô tả</th>
+						<th>Ảnh</th>
+						<th>Tác vụ</th>
+					</tr>
+				</thead>
+				<tbody class="table-body">
+					<tr>
+						<td>SP001</td>
+						<td>Rau Muống</td>
+						<td>50</td>
+						<td>01/05/2024</td>
+						<td>500,000 VND</td>
+						<td>Rau muống là một ...</td>
+						<td><img src="img/rau-muong.jpg" alt="Ảnh sản phẩm A" style="max-width: 80px;"></td>
+						<td>
+							<button class="btn btn-warning btnSua">Sửa</button>
+							<button class="btn btn-danger btnXoa">Xóa</button>
+						</td>
+					</tr>
+					<tr>
+						<td>SP002</td>
+						<td>Ngô</td>
+						<td>30</td>
+						<td>02/05/2024</td>
+						<td>700,000 VND</td>
+						<td>Ngô là một loại...</td>
+						<td><img src="img/ngo.jpg" alt="Ảnh sản phẩm B" style="max-width: 80px;"></td>
+						<td>
+							<button class="btn btn-warning btnSua">Sửa</button>
+							<button class="btn btn-danger btnXoa">Xóa</button>
+						</td>
+					</tr>
+					<tr>
+						<td>SP003</td>
+						<td>Ớt chuông</td>
+						<td>20</td>
+						<td>02/05/2024</td>
+						<td>800,000 VND</td>
+						<td>Ớt chuông là loại ...</td>
+						<td><img src="img/ot_chuong.jpg" alt="Ảnh sản phẩm C" style="max-width: 80px;"></td>
+						<td>
+							<button class="btn btn-warning btnSua">Sửa</button>
+							<button class="btn btn-danger btnXoa">Xóa</button>
+						</td>
+					</tr>
+					<tr>
+						<td>SP004</td>
+						<td>Bí đỏ</td>
+						<td>25</td>
+						<td>02/05/2024</td>
+						<td>900,000 VND</td>
+						<td>Bí đỏ rất bổ dưỡng...</td>
+						<td><img src="img/bi-do.jpg" alt="Ảnh sản phẩm D" style="max-width: 80px;"></td>
+						<td>
+							<button class="btn btn-warning btnSua">Sửa</button>
+							<button class="btn btn-danger btnXoa">Xóa</button>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+			<button class="btn btn-success btnThem">Thêm</button>
+		</div>
+	</div>
+
+	<ul class="pagination">
+	</ul>
+	</div>
+
+	<div class="row col-md-6">
+		<form class="formAdd" action="">
+			<div>
+				<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true" data-backdrop="static" data-keyboard="false">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Thêm mới sản phẩm</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="id">Mã sản phẩm:</label>
+									<input id="id" type="text" class="form-control" name="id" required="required" />
+								</div>
+								<div class="form-group">
+									<label for="hoTen">Tên sản phẩm:</label>
+									<input id="hoTen" type="text" class="form-control" name="hoTen"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="soLuong">Số lượng</label>
+									<input id="soLuong" type="text" class="form-control" name="trangThai"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="ngayNhap">Ngày nhập:</label>
+									<input id="ngayNhap" type="date" class="form-control" name="ngayNhap"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="donGia">Đơn giá:</label>
+									<input id="donGia" type="text" class="form-control" name="donGia"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="mota">Mô tả</label>
+									<input id="moTa" type="text" class="form-control" name="moTa" required="required" />
+								</div>
+								<div class="form-group">
+									<label for="inputEmail4">Hình ảnh</label> <input type="file" class="form-control"
+										name="hinhAnh">
+								</div>
+							</div>
+							<div class="modal-footer">
+
+								<input class="btn btn-primary" id="btnSubmit" type="submit" value="Thêm mới" />
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="row col-md-6">
+		<form class="formCapNhat" action="">
+			<div>
+				<div class="modal fade" id="capNhatModal" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Cập nhật thông tin Sản phẩm</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<div class="form-group">
+									<label for="hoTen">Tên sản phẩm:</label>
+									<input id="hoTen" type="text" class="form-control" name="hoTen"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="soLuong">Số lượng</label>
+									<input id="soLuong" type="text" class="form-control" name="soLuong"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="ngayNhap">Ngày nhập:</label>
+									<input id="ngayNhap" type="date" class="form-control" name="ngayNhap"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="donGia">Đơn giá:</label>
+									<input id="donGia" type="text" class="form-control" name="donGia"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="mota">Mô tả</label>
+									<input id="moTa" type="text" class="form-control" name="moTa" required="required" />
+								</div>
+								<div class="form-group">
+									<label for="inputEmail4">Hình ảnh</label> <input type="file" class="form-control"
+										name="hinhAnh">
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+								<input class="btn btn-primary" id="btnSubmit" type="submit" value="Xác nhận" />
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<script>
+		$(document).ready(function () {
+			// Show formCapNhat when the "Sửa" button is clicked
+			$('.btnSua').click(function () {
+				// Get the row where the button is clicked
+				var row = $(this).closest('tr');
+
+				// Extract information from the row
+				var ma = row.find('td:eq(0)').text(); // Mã
+				var tenSP = row.find('td:eq(1)').text(); // Tên SP
+				var soLuong = row.find('td:eq(2)').text(); // Số lượng
+				var ngayNhap = row.find('td:eq(3)').text(); // Ngày nhập
+				var donGia = row.find('td:eq(4)').text(); // Đơn giá
+				var moTa = row.find('td:eq(5)').text(); // Mô tả
+
+				// Populate the fields in the formCapNhat modal
+				$("#capNhatModal input[name='hoTen']").val(tenSP);
+				$("#capNhatModal input[name='soLuong']").val(soLuong);
+				$("#capNhatModal input[name='ngayNhap']").val(ngayNhap);
+				$("#capNhatModal input[name='donGia']").val(donGia);
+				$("#capNhatModal input[name='moTa']").val(moTa);
+
+				// Show the modal
+				$('#capNhatModal').modal('show');
+
+
+			});
+
+			$('.btnThem').click(function () {
+				$('#add').modal('show');
+			});
+
+			// Handle form submission for formAdd
+			$('.formAdd').submit(function (event) {
+				event.preventDefault(); // Prevent the default form submission
+
+				// Get the values entered in the form
+				var maSP = $('#id').val();
+				var tenSP = $('#hoTen').val();
+				var soLuong = $('#soLuong').val();
+				var ngayNhap = $('#ngayNhap').val();
+				var donGia = $('#donGia').val();
+				var moTa = $('#moTa').val();
+
+				// Append a new row to the table with the entered data
+				var newRow = '<tr>' +
+					'<td>' + maSP + '</td>' +
+					'<td>' + tenSP + '</td>' +
+					'<td>' + soLuong + '</td>' +
+					'<td>' + ngayNhap + '</td>' +
+					'<td>' + donGia + '</td>' +
+					'<td>' + moTa + '</td>' +
+					'<td></td>' +
+					'<td>' +
+					'<button class="btn btn-warning btnSua">Sửa</button>' +
+					'<button class="btn btn-danger btnXoa">Xóa</button>' +
+					'</td>' +
+
+
+					'</tr>';
+
+				$('.sanPhamTable tbody').append(newRow); // Append the new row to the table body
+
+				$('#add').modal('hide');
+
+			});
+		});
+
+		$(document).ready(function () {
+			// Xử lý sự kiện khi nút "Xóa" được click
+			$(".btnXoa").click(function () {
+				// Lấy hàng chứa nút "Xóa" được click
+				var row = $(this).closest('tr');
+
+				// Hiển thị hộp thoại xác nhận xóa
+				var confirmed = confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?");
+
+				// Nếu người dùng đồng ý xóa
+				if (confirmed) {
+					// Xóa hàng khỏi bảng
+					row.remove();
+					// Hiển thị thông báo xóa thành công hoặc thực hiện các bước xóa thực tế tại đây
+				}
+			});
+		});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
+	<script src="<c:url value='/js/sanPhamAjax.js'/>"></script>
+</body>
+
+</html>

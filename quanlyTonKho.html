@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Quản lý tồn kho</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/admin.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+	.circle-icon {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: #c82020;
+		text-align: center;
+		line-height: 20px;
+		font-size: 12px;
+		color: white;
+		margin-top: 7px;
+		margin-left: 10px;
+	}
+
+	.circle-icon2 {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: #a6bb52;
+		text-align: center;
+		line-height: 20px;
+		font-size: 12px;
+		color: white;
+		margin-top: 7px;
+		margin-left: 10px;
+	}
+
+	.addhetHan {
+		color: rgb(242, 73, 73);
+		font-weight: bold;
+
+	}
+
+	.addsapHetHan {
+		color: rgb(129, 129, 0);
+		font-weight: bold;
+	}
+
+	body {
+		font-family: Arial, sans-serif;
+	}
+
+	.overlay1 {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.form-container1 {
+		background: white;
+		padding: 20px;
+		border-radius: 10px;
+		width: 400px;
+		position: relative;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.form-container1 input {
+		width: 100%;
+		padding: 10px;
+		margin: 10px 0;
+		box-sizing: border-box;
+	}
+
+	.form-container1 button {
+		padding: 10px 20px;
+		margin: 10px 5px 0 0;
+		cursor: pointer;
+	}
+
+	.close-btn {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: red;
+		color: white;
+		border: none;
+		cursor: pointer;
+		padding: 5px 10px;
+	}
+
+	.close-btn2 {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: red;
+		color: white;
+		border: none;
+		cursor: pointer;
+		padding: 5px 10px;
+	}
+
+	.close-btn3 {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: red;
+		color: white;
+		border: none;
+		cursor: pointer;
+		padding: 5px 10px;
+	}
+
+	.close-btn4 {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: red;
+		color: white;
+		border: none;
+		cursor: pointer;
+		padding: 5px 10px;
+	}
+
+	.error1 {
+		border: 1px solid red;
+	}
+
+	.error-message1 {
+		color: red;
+		font-size: 12px;
+	}
+
+	.overlay2 {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.form-container2 {
+		background: white;
+		padding: 20px;
+		border-radius: 10px;
+		width: 400px;
+		position: relative;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.form-container2 input {
+		width: 100%;
+		padding: 10px;
+		margin: 10px 0;
+		box-sizing: border-box;
+	}
+
+	.form-container2 button {
+		padding: 10px 20px;
+		margin: 10px 5px 0 0;
+		cursor: pointer;
+	}
+
+	.overlay3 {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.form-container3 {
+		background: white;
+		padding: 20px;
+		border-radius: 10px;
+		width: 400px;
+		position: relative;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.form-container3 input {
+		width: 100%;
+		padding: 10px;
+		margin: 10px 0;
+		box-sizing: border-box;
+	}
+
+	.form-container3 button {
+		padding: 10px 20px;
+		margin: 10px 5px 0 0;
+		cursor: pointer;
+	}
+
+	.overlay4 {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.form-container4 {
+		background: white;
+		padding: 20px;
+		border-radius: 10px;
+		width: 400px;
+		position: relative;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.form-container4 input {
+		width: 100%;
+		padding: 10px;
+		margin: 10px 0;
+		box-sizing: border-box;
+	}
+
+	.form-container4 button {
+		padding: 10px 20px;
+		margin: 10px 5px 0 0;
+		cursor: pointer;
+	}
+</style>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="profile.html">VNA SHOP - Trang Quản Trị</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-user">&nbsp;</span>Xin chào: Hoàng Tuấn An</a>
+					</li>
+					<li>
+						<a href="welcome.html"><span class="glyphicon glyphicon-log-out"></span> Đăng xuất</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="col-md-3">
+
+			<div id="sidebar">
+				<div class="container-fluid tmargin">
+					<div class="input-group">
+
+					</div>
+				</div>
+
+				<ul class="nav navbar-nav side-bar">
+
+					<li class="side-bar tmargin">
+						<a href="quanLyDonHang.html">
+							<span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>Quản lý Đơn hàng</a>
+					</li>
+
+					<li class="side-bar active">
+						<a href='quanLySanPham.html'>
+							<span class="glyphicon glyphicon-folder-open">&nbsp;</span>Quản lý Sản phẩm</a>
+					</li>
+
+					<li class="side-bar">
+						<a href='quanlyTonKho.html'>
+							<span class="glyphicon glyphicon-tasks">&nbsp;</span>Quản lý Tồn kho</a>
+					</li>
+
+
+
+					<li class="side-bar main-menu">
+						<a href="quanLyTaiKhoan.html">
+							<span class="glyphicon glyphicon-th-list">&nbsp;</span>Quản lý Tài khoản</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="quanLyPhanHoi.html">
+							<span class="glyphicon glyphicon-envelope">&nbsp;</span>Quản lý Phản hồi</a>
+					</li>
+
+					<li class="side-bar main-menu">
+						<a href="thongKe.html">
+							<span class="glyphicon glyphicon-signal">&nbsp;</span>Thống kê</a>
+					</li>
+
+					<li class="side-bar">
+						<a href="profile.html">
+							<span class="glyphicon glyphicon-user">&nbsp;</span>Thông tin cá nhân</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-9 animated bounce">
+			<h3 class="page-header form-inline">Quản lý Tồn kho</h3>
+
+			<div>
+				<button class="btn btn-success" id="capNhat" type="button">Cập nhật</button>
+			</div>
+			<br>
+			<table class="table table-hover" id="tonKhoTable" style="text-align:center;">
+				<thead>
+					<tr>
+						<th>Tên sản phẩm</th>
+						<th>Trọng lượng</th>
+						<th>Giá tiền</th>
+						<th>Ngày nhập kho</th>
+						<th>Hạn sử dụng</th>
+						<th>Tác vụ</th>
+						<th>Trạng thái</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Rau giá</td>
+						<td>40kg</td>
+						<td>200.000 vnđ</td>
+						<td>10/05/2024</td>
+						<td>18/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td>
+
+						</td>
+					</tr>
+					<tr class="mauDo">
+						<td>Rau Muống</td>
+						<td>50kg</td>
+						<td>250.000 vnđ</td>
+						<td>5/05/2024</td>
+						<td>15/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td>
+							<div class="hetHan">
+
+							</div>
+							<!-- <div class="circle-icon" title="Đã hết hạn sử dụng">
+								<i class="fas fa-exclamation"></i>
+							</div> -->
+						</td>
+					</tr>
+					<tr class="mauVang">
+						<td>Rau cải</td>
+						<td>80kg</td>
+						<td>800.000 vnđ</td>
+						<td>9/05/2024</td>
+						<td>17/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat" class="xuatsapHetHan">Xuất</button>
+						</td>
+						<td>
+							<div class="sapHetHan">
+
+							</div>
+							<!-- <div class="circle-icon2" title="Rau của bạn còn 1 ngày nữa là hết hạn">
+								<i class="fas fa-info"></i>
+							</div> -->
+						</td>
+					</tr>
+					<tr>
+						<td>Rau dền</td>
+						<td>40kg</td>
+						<td>200.000 vnđ</td>
+						<td>10/05/2024</td>
+						<td>19/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Cà rốt</td>
+						<td>100kg</td>
+						<td>1000.000 vnđ</td>
+						<td>11/04/2024</td>
+						<td>20/04/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td></td>
+					</tr>
+					<tr class="mauDo">
+						<td>Đậu hà lan xanh</td>
+						<td>40kg</td>
+						<td>500.000 vnđ</td>
+						<td>10/05/2024</td>
+						<td>14/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td>
+							<div class="hetHan">
+
+							</div>
+							<!-- <div class="circle-icon" title="Đã hết hạn sử dụng">
+								<i class="fas fa-exclamation"></i>
+							</div> -->
+						</td>
+					</tr>
+					<tr>
+						<td>Rau giá</td>
+						<td>40kg</td>
+						<td>320.000 vnđ</td>
+						<td>20/05/2024</td>
+						<td>24/06/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat">Xuất</button>
+						</td>
+						<td></td>
+					</tr>
+					<tr class="mauVang">
+						<td>Rau giá</td>
+						<td>40kg</td>
+						<td>200.000 vnđ</td>
+						<td>17/05/2024</td>
+						<td>18/05/2024</td>
+						<td>
+							<button type="button" class="btn btn-warning sua">Sửa</button>
+							<button type="button" class="btn btn-primary xuat" class="xuatsapHetHan">Xuất</button>
+						</td>
+						<td>
+							<div class="sapHetHan">
+
+							</div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+		</div>
+	</div>
+
+	<ul class="pagination">
+	</ul>
+	</div>
+
+	<!-- CapNhat -->
+	<div class="overlay2" style="display: none;">
+		<div class="form-container2">
+			<button class="close-btn">X</button>
+			<h2>Cập nhật</h2>
+			<form id="registerForm2">
+				<p class="h4">Các sản phẩm hết hạn sẽ được chuyển sang trang trại ABC, bạn hãy xác nhận lại thông tin
+				</p>
+				<div style="text-align: right;">
+					<button type="button" id="saveBtn2" class="btn btn-primary">Xác nhận</button>
+					<button type="button" id="cancelBtn2" class="btn btn-danger">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			var oneTime = false;
+			//CAP NHAT
+			$("#capNhat").click(function () {
+				if (!oneTime) {
+					$("#tonKhoTable").each(function () {
+						$(this).find(".mauDo").addClass("addhetHan");
+						$(this).find(".mauVang").addClass("addsapHetHan");
+					});
+					$(".hetHan").append('<p>Hết Hạn</p>');
+					$(".sapHetHan").append('<p>Sắp Hết Hạn</p>');
+				}
+				oneTime = true;
+				$('.overlay2').fadeIn();
+			});
+			$('.close-btn, #cancelBtn2').click(function () {
+				$('.overlay2').fadeOut();
+				clearForm();
+			});
+
+			$('.overlay2').click(function (event) {
+				if ($(event.target).is('.overlay2')) {
+					$('.overlay2').fadeOut();
+					clearForm();
+				}
+			});
+
+			$('#saveBtn2').click(function () {
+				alert("Xuất sản phẩm sang công ty ABC thành công!");
+			});
+		});
+	</script>
+
+	<!--SUA SAN PHAM-->
+	<div class="overlay1" style="display: none;">
+		<div class="form-container1">
+			<button class="close-btn2">X</button>
+			<h2>Sửa sản phẩm</h2>
+			<form id="registerForm1">
+				<input type="text" id="tenSp" placeholder="Tên sản phẩm">
+				<div id="tenSpError" class="error-message1"></div>
+				<input type="text" id="trongLuong" placeholder="Trọng lượng">
+				<div id="trongLuongError" class="error-message1"></div>
+				<input type="text" id="giaTien" placeholder="Giá tiền">
+				<div id="giaTienError" class="error-message1"></div>
+				<input type="text" id="ngayNhap" placeholder="Ngày nhập kho">
+				<div id="ngayNhapError" class="error-message1"></div>
+				<input type="text" id="hsd" placeholder="Hạn sử dụng">
+				<div id="hsdError" class="error-message1"></div>
+				<div style="text-align: right;">
+					<button type="button" id="saveBtn1" class="btn btn-primary">Lưu</button>
+					<button type="button" id="cancelBtn1" class="btn btn-danger">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<script>
+		$(document).ready(function () {
+			$('.sua').click(function () {
+				$('.overlay1').fadeIn();
+			});
+
+			$('.close-btn2, #cancelBtn1').click(function () {
+				$('.overlay1').fadeOut();
+				clearForm();
+			});
+
+			$('.overlay1').click(function (event) {
+				if ($(event.target).is('.overlay1')) {
+					$('.overlay1').fadeOut();
+					clearForm();
+				}
+			});
+
+			$('#saveBtn1').click(function () {
+				let isValid = validateForm();
+				if (isValid) {
+					alert("Form submitted successfully!");
+					$('.overlay1').fadeOut();
+					clearForm();
+				}
+			});
+
+			function validateForm() {
+				let isValid = true;
+
+				// Validate Ten san pham
+				const tenSp = $('#tenSp').val();
+				if (tenSp.trim() === "") {
+					$('#tenSp').addClass('error1');
+					$('#tenSpError').text('Không được để trống thông tin !');
+					isValid = false;
+				} else {
+					$('#tenSp').removeClass('error1');
+					$('#tenSp').text('');
+				}
+
+				// Validate TRONG LUONG
+				const trongLuong = $('#trongLuong').val();
+				if (!/^\d+$/.test(trongLuong) || trongLuong.trim() === "") {
+					$('#trongLuong').addClass('error1');
+					$('#trongLuongError').text('Không được để trống thông tin hoặc chỉ nhập số !');
+					isValid = false;
+				} else {
+					$('#trongLuong').removeClass('error1');
+					$('#trongLuongError').text('');
+				}
+
+				// Validate gia tien
+				const giaTien = $('#giaTien').val();
+				if (!/^\d+$/.test(giaTien) || giaTien.trim() === "") {
+					$('#giaTien').addClass('error1');
+					$('#giaTienError').text('Không được để trống thông tin hoặc chỉ nhập số !');
+					isValid = false;
+				} else {
+					$('#giaTien').removeClass('error1');
+					$('#giaTienError').text('');
+				}
+
+				// Validate ngay nhap kho
+				const ngayNhap = $('#ngayNhap').val();
+				if (ngayNhap.trim() === "") {
+					$('#ngayNhap').addClass('error1');
+					$('#ngayNhapError').text('Không được để trống thông tin !');
+					isValid = false;
+				} else {
+					$('#ngayNhap').removeClass('error1');
+					$('#ngayNhapError').text('');
+				}
+
+				const hsd = $('#hsd').val();
+				if (hsd.trim() === "") {
+					$('#hsd').addClass('error1');
+					$('#hsdError').text('Không được để trống thông tin !');
+					isValid = false;
+				} else {
+					$('#hsd').removeClass('error1');
+					$('#hsdError').text('');
+				}
+
+				return isValid;
+			}
+
+			function clearForm() {
+				$('#registerForm1')[0].reset();
+				$('.error-message1').text('');
+				$('input').removeClass('error1');
+			}
+		});
+	</script>
+
+
+	<!-- Xuat san pham -->
+	<div class="overlay3" style="display: none;">
+		<div class="form-container3">
+			<button class="close-btn3">X</button>
+			<h2>Xuất sản phẩm</h2>
+			<form id="registerForm1">
+				<p class="h3">Bạn có muốn xuất sản phẩm này không ?</p>
+				<div style="text-align: right;">
+					<button type="button" id="saveBtn3" class="btn btn-primary">Xác nhận</button>
+					<button type="button" id="cancelBtn3" class="btn btn-danger">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.xuat').click(function () {
+				$('.overlay3').fadeIn();
+			});
+
+			$('.close-btn3, #cancelBtn3').click(function () {
+				$('.overlay3').fadeOut();
+				clearForm();
+			});
+
+			$('.overlay3').click(function (event) {
+				if ($(event.target).is('.overlay3')) {
+					$('.overlay3').fadeOut();
+					clearForm();
+				}
+			});
+
+			$('#saveBtn3').click(function () {
+				alert("Xuất sản phẩm thành công !");
+			});
+		});
+	</script>
+	<!-- Xuat san pham sap het han -->
+	<div class="overlay4" style="display: none;">
+		<div class="form-container4">
+			<button class="close-btn4">X</button>
+			<h2>Xuất sản phẩm</h2>
+			<form id="registerForm4">
+				<p class="h3">Sản phẩm này hết hạn nên sẽ được chuyển sang sale Off ?</p>
+				<div style="text-align: right;">
+					<button type="button" id="saveBtn4" class="btn btn-success">Xác nhận</button>
+					<button type="button" id="cancelBtn4" class="btn btn-success">Hủy</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#xuatsapHetHan').click(function () {
+				$('.overlay4').show();
+			});
+
+			$('.close-btn4,#cancelBtn4').click(function () {
+				$('.overlay4').hide();
+				clearForm();
+			});
+
+			$('.overlay4').click(function (event) {
+				if ($(event.target).is('.overlay4')) {
+					$('.overlay4').hide();
+					clearForm();
+				}
+			});
+
+			$('#saveBtn4').click(function () {
+				alert("Xuất sản phẩm thành công !");
+				$('.overlay4').hide();
+				clearForm();
+			});
+		});
+	</script>
+	<jsp:include page="template/footer.jsp"></jsp:include>
+	<script src="<c:url value='/js/danhMucAjax.js'/>"></script>
+</body>
+
+</html>
